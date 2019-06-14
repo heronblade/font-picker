@@ -1,17 +1,25 @@
 <template>
-  <section class="main">
-    <div class="text">
-      <input v-model="message" type="text" placeholder="try me">
+  <section class="picker">
+    <div class="picker__section">
+      <div class="picker__instructions">Enter Name or Text</div>
+      <input v-model="message" type="search" placeholder="Name or Text Here">
     </div>
-    <colorPicker
-      v-on:handleColorClick="handleColorClick"
-    ></colorPicker>
-    <div v-for="font in fonts" v-bind:key="font.name" class="font">
-      <p>{{font.name}}</p>
-      <p v-bind:style="{
+    <div class="picker__section">
+      <div class="picker__instructions">Choose a color</div>
+      <colorPicker
+        v-on:handleColorClick="handleColorClick"
+      ></colorPicker>
+    </div>
+    <div class="picker__section">
+      <div class="picker__instructions">Choose a font</div>
+      <div v-for="font in fonts" v-bind:key="font.name" class="font">
+        <p>{{font.name}}</p>
+        <p v-bind:style="{
       fontFamily: font.name,
       fontSize: fontSize + 'px',
       color: activeColor }">{{message}}</p>
+        <button v-on:click="handleFontClick(font.name)">Pick Font</button>
+      </div>
     </div>
   </section>
 </template>
@@ -55,6 +63,9 @@ export default {
     handleColorClick(color) {
       this.activeColor = color;
     },
+    handleFontClick(font) {
+      console.log(font);
+    }
   },
 };
 </script>
