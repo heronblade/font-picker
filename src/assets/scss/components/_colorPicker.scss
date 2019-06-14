@@ -1,0 +1,10 @@
+@import "../variables";
+
+.color-picker {
+    display: flex;
+    justify-content: center;
+    .color {
+        width: $color-box-width;
+        height: $color-box-height;
+    }
+}
