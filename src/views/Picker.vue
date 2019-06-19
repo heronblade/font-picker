@@ -6,13 +6,15 @@
     </div>
     <div class="picker__section">
       <div class="picker__instructions">Choose a font</div>
-      <div v-for="font in fonts" v-bind:key="font.name" class="font">
-        <p>{{font.name}}</p>
-        <p v-bind:style="{
+      <div class="font-wrapper">
+        <div v-for="font in fonts" v-bind:key="font.name" class="font">
+          <p>{{font.name}}</p>
+          <p v-bind:style="{
       fontFamily: font.id,
       fontSize: fontSize + 'px',
       color: activeColor }">{{message}}</p>
-        <button v-on:click="handleFontClick(font.name)">Pick Font</button>
+          <button v-on:click="handleFontClick(font.name)">Pick Font</button>
+        </div>
       </div>
     </div>
   </section>
@@ -168,7 +170,23 @@ export default {
       this.activeColor = color;
     },
     handleFontClick(font) {
-      console.log(font);
+      // Grab the input from the form and put our font name in there
+      const labels = document.getElementsByTagName('label')
+
+      for (let label of labels) {
+        if (label.innerText === 'Desired Font From Below*') {
+          const parent = label.parentElement;
+          const parentChildNodes = parent.childNodes;
+          for (let pcn of parentChildNodes) {
+            const moreKids = pcn.childNodes;
+            for (let kid of moreKids) {
+              if (kid.nodeName === 'INPUT') {
+                kid.value = font;
+              }
+            }
+          }
+        }
+      }
     },
   },
 };
