@@ -5,12 +5,6 @@
       <input v-model="message" type="search" placeholder="Name or Text Here">
     </div>
     <div class="picker__section">
-      <div class="picker__instructions">Choose a color</div>
-      <colorPicker
-        v-on:handleColorClick="handleColorClick"
-      ></colorPicker>
-    </div>
-    <div class="picker__section">
       <div class="picker__instructions">Choose a font</div>
       <div v-for="font in fonts" v-bind:key="font.name" class="font">
         <p>{{font.name}}</p>
@@ -25,13 +19,8 @@
 </template>
 
 <script>
-import colorPicker from '../components/ColorPicker.vue';
-
 export default {
   name: 'picker',
-  components: {
-    colorPicker,
-  },
   data() {
     return {
       activeColor: 'black',
@@ -180,7 +169,7 @@ export default {
     },
     handleFontClick(font) {
       console.log(font);
-    }
+    },
   },
 };
 </script>
