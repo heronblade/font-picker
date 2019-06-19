@@ -1,10 +1,13 @@
 @import './variables';
 
-//Components
+// Components
 @import "./components/colorPicker";
 
-//Pages
+// Pages
 @import "./pages/picker";
+
+// Fonts
+@import "./fonts";
 
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
