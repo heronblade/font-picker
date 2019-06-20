@@ -5,13 +5,14 @@
 </template>
 
 <script>
-import picker from './views/Picker';
+import picker from './views/Picker.vue';
+
 export default {
   name: 'app',
   components: {
     picker,
   },
-}
+};
 </script>
 
 <style lang="scss">

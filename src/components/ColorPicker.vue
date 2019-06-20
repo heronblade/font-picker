@@ -24,7 +24,7 @@ export default {
         'rgba(224, 96, 15, 1)',
         'rgba(148, 29, 31, 1)',
         'rgba(73, 43, 35, 1)',
-        'rgba(4, 4, 4, 1)'
+        'rgba(4, 4, 4, 1)',
       ],
     };
   },
@@ -34,7 +34,7 @@ export default {
     },
   },
   computed: {
-    borderColors: function() {
+    borderColors() {
       return this.colors
         .map((color) => {
           const splitColor = color.split(',');

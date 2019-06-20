@@ -171,15 +171,15 @@ export default {
     },
     handleFontClick(font) {
       // Grab the input from the form and put our font name in there
-      const labels = document.getElementsByTagName('label')
+      const labels = document.getElementsByTagName('label');
 
-      for (let label of labels) {
+      for (const label of labels) {
         if (label.innerText === 'Desired Font From Below*') {
           const parent = label.parentElement;
           const parentChildNodes = parent.childNodes;
-          for (let pcn of parentChildNodes) {
+          for (const pcn of parentChildNodes) {
             const moreKids = pcn.childNodes;
-            for (let kid of moreKids) {
+            for (const kid of moreKids) {
               if (kid.nodeName === 'INPUT') {
                 kid.value = font;
               }
