@@ -13,7 +13,7 @@
       fontFamily: font.id,
       fontSize: fontSize + 'px',
       color: activeColor }">{{message}}</p>
-          <button v-on:click="handleFontClick(font.name)">Pick Font</button>
+<!--          <button v-on:click="handleFontClick(font.name)">Pick Font</button>-->
         </div>
       </div>
     </div>
