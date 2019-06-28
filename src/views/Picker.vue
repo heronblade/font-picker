@@ -198,13 +198,13 @@ export default {
     },
   },
   mounted() {
-    document.querySelector('.picker__height').innerHTML = document.querySelector('.picker').clientHeight;
+    this.handleInputChange();
   },
   watch: {
     message() {
       if (this.message.length === 0) {
         setTimeout(() => {
-          document.querySelector('.picker__height').innerHTML = document.querySelector('.picker').clientHeight;
+          this.handleInputChange();
         }, 500);
       }
     }
