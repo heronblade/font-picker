@@ -2,7 +2,7 @@
   <section class="picker">
     <div class="picker__section">
       <div class="picker__instructions">Enter Name or Text</div>
-      <input v-model="message" type="search" placeholder="Name or Text Here">
+      <input v-model="message" type="search" placeholder="Name or Text Here" v-on:input="handleInputChange">
     </div>
     <div class="picker__section">
       <div class="picker__instructions">Choose a font</div>
@@ -10,13 +10,16 @@
         <div v-for="font in fonts" v-bind:key="font.name" class="font">
           <p>{{font.name}}</p>
           <p v-bind:style="{
-      fontFamily: font.id,
-      fontSize: fontSize + 'px',
-      color: activeColor }">{{message}}</p>
+                    fontFamily: font.id,
+                    fontSize: fontSize + 'px',
+                    color: activeColor }">
+            {{message}}
+          </p>
 <!--          <button v-on:click="handleFontClick(font.name)">Pick Font</button>-->
         </div>
       </div>
     </div>
+    <div class="picker__height hide"></div>
   </section>
 </template>
 
@@ -187,6 +190,15 @@ export default {
           }
         }
       }
+    },
+    handleInputChange() {
+      console.log('input change');
+      // here we need to keep track of the height of the picker
+      // and store it so that I can grab it outside of the iframe
+      const pickerHeight = document.querySelector('.picker');
+      document.querySelector('.picker__height').innerHTML = pickerHeight.clientHeight;
+      console.log(pickerHeight.clientHeight);
+      console.log(pickerHeight.scrollHeight);
     },
   },
 };
