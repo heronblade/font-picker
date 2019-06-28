@@ -192,14 +192,22 @@ export default {
       }
     },
     handleInputChange() {
-      console.log('input change');
       // here we need to keep track of the height of the picker
       // and store it so that I can grab it outside of the iframe
-      const pickerHeight = document.querySelector('.picker');
-      document.querySelector('.picker__height').innerHTML = pickerHeight.clientHeight;
-      console.log(pickerHeight.clientHeight);
-      console.log(pickerHeight.scrollHeight);
+      document.querySelector('.picker__height').innerHTML = document.querySelector('.picker').clientHeight;
     },
   },
+  mounted() {
+    document.querySelector('.picker__height').innerHTML = document.querySelector('.picker').clientHeight;
+  },
+  watch: {
+    message() {
+      if (this.message.length === 0) {
+        setTimeout(() => {
+          document.querySelector('.picker__height').innerHTML = document.querySelector('.picker').clientHeight;
+        }, 500);
+      }
+    }
+  }
 };
 </script>
